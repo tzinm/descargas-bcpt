@@ -8,6 +8,7 @@ WORKDIR /home/
 COPY AddToQbitTorrentFolder.py .
 
 RUN \
+ pip install --upgrade pip && \
  python3 -m pip install telegram --upgrade && \
  python3 -m pip install python-telegram-bot --upgrade && \
  chown root:root AddToQbitTorrentFolder.py && \
