@@ -37,28 +37,16 @@ id nombre_usuario
 - Id de usuario de **Telegram**: para obtener nuestro id de usuario de telegram, utilizaremos el bot [@myidbot](https://t.me/myidbot). Pasos a seguir:
 
   - Iniciamos el bot
-
     
-
     ![Iniciar bot](https://dl.dropboxusercontent.com/s/v30meu6tperge3i/myidbot.png?dl=0)
-
-    
-
+   
   - Ejecutamos la acción getid
-
-    
 
     ![getid](https://dl.dropboxusercontent.com/s/pkiuu4qabzg23p3/getid.png?dl=0)
 
-  
-
   - Nos mostrará el id del usuario
 
-    
-
     ![myid](https://dl.dropboxusercontent.com/s/lcg62ruhrb7wr76/idtzinm.png?dl=0)
-
-    
 
 - Token del bot: lo primero que debemos hacer es iniciar una conversación con el bot [@BotFather](https://t.me/BotFather) para crear un bot. Pasos a seguir:
 
@@ -66,20 +54,13 @@ id nombre_usuario
 
   - Ejecutamos el comando /newbot
 
-    
-
     ![newbot](https://dl.dropboxusercontent.com/s/2taz8p8h5lisibp/botfathernewbot.png?dl=0)
 
   - Nos solicitará un nombre para el bot y un nombre de usuario que será el que identificará al bot que estamos creando. Una vez creado el bot, nos aparecerá un mensaje en el que aparece el token del bot que acabamos de crear.
 
-    
-
     ![token](https://dl.dropbox.com/s/g4ro2s95pvv5krf/tokenbot.png?dl=0)
 
-  
-
 - Volumen: aquí indicaremos donde queremos que se almacenen los torrent dentro de nuestro sistema operativo (DSM, OpenMediaVault, QTS, etc.). Habitualmente será el directorio "caliente" que utiliza el cliente torrent para añadir los .torrent a la lista de descargas.
-
 
 
 ## Creación del contenedor vía cli
@@ -158,5 +139,4 @@ En este caso mostraré varias capturas de que parámetros debemos modificar. Las
 
 **Para que el contenedor funcione es necesario iniciar el bot que hemos creado.**
 
-![Tabla Contenedores](https://dl.dropbox.com/s/228guedor6ydpyr/tabla-contenedor.png?dl=0)
 
