@@ -121,17 +121,14 @@ En este caso mostraré varias capturas de que parámetros debemos modificar. Las
 
 2. Establecer el **volúmen**, en la parte izquierda el que corresponde a DSM, y en la parte derecha al correspondiente al contenedor. **NO** marcar la casilla **sólo lectura**. 
 
-   
 
    ![Volumen](https://dl.dropbox.com/s/flrnv1y2lj9gayd/volumen-synology.jpg?dl=0 "Volumen")
-
    
 
 3. Añadir las **variables de entorno** que hemos visto más arriba.
 
    
-
-    ![Variables de entorno](https://dl.dropbox.com/s/3b57guj4g2zx0ov/medio-ambiente-synology.jpg?dl=0 "Variables de entorno")
+   ![Variables de entorno](https://dl.dropbox.com/s/3b57guj4g2zx0ov/medio-ambiente-synology.jpg?dl=0 "Variables de entorno")
 
    
 
