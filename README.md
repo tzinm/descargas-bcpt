@@ -2,7 +2,7 @@
 
 # tzinm/descargas-bcpt
 
-La creación de este bot se basa en la guía de "[Bot de descargas para NAS Synology](https://telegra.ph/Bot-de-descargas-para-NAS-Synology-10-13)" en la que se explica como aprovechar un bot de telegram para enviar ficheros **.torrent** y **zip** (que contengan ficheros torrent) ](https://t.me/grupo_bcpt) a nuestro gestor de torrents (Transmission, Deluge, Download Station, etc.).
+La creación de este bot se basa en la guía de "[Bot de descargas para NAS Synology](https://telegra.ph/Bot-de-descargas-para-NAS-Synology-10-13)" en la que se explica como aprovechar un bot de telegram para enviar ficheros **.torrent** y **zip** (que contengan ficheros torrent) a nuestro gestor de torrents (Transmission, Deluge, Download Station, etc.).
 
 Este contenedor ha sido creado puesto que la guía no era aplicable para el Sistema Operativo OpenMediaVault y para simplificar los pasos a realizar.
 
