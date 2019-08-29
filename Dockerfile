@@ -18,4 +18,4 @@ RUN \
 
 VOLUME /home/descargas
 
-CMD ["pyhton", "/home/AddToQbitTorrentFolder.py"]
+CMD ["python", "/home/AddToQbitTorrentFolder.py"]
