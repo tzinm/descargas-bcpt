@@ -14,6 +14,7 @@ Para crear este contenedor debemos establecer los siguientes parámetros:
 
 | Parámetro          | Función                                                      |
 | ------------------ | ------------------------------------------------------------ |
+| -e TZ=	     | Especificar zona horario (p.e. Europe/Madrid		    |
 | -e PUID=           | ID de usuario                                                |
 | -e PGID=           | ID de grupo                                                  |
 | -e usuario1=       | Se establece el id del usuario de telegram que tendrá permisos para interactuar con el bot. |
@@ -39,7 +40,7 @@ id nombre_usuario
   - Iniciamos el bot
     
     ![Iniciar bot](https://dl.dropboxusercontent.com/s/v30meu6tperge3i/myidbot.png?dl=0)
-   
+  
   - Ejecutamos la acción getid
 
     ![getid](https://dl.dropboxusercontent.com/s/pkiuu4qabzg23p3/getid.png?dl=0)
@@ -49,8 +50,6 @@ id nombre_usuario
     ![myid](https://dl.dropboxusercontent.com/s/lcg62ruhrb7wr76/idtzinm.png?dl=0)
 
 - Token del bot: lo primero que debemos hacer es iniciar una conversación con el bot [@BotFather](https://t.me/BotFather) para crear un bot. Pasos a seguir:
-
-  ​	
 
   - Ejecutamos el comando /newbot
 
@@ -67,18 +66,21 @@ id nombre_usuario
 
 - Descargar la imagen
 
-````bash
-docker pull tzinm/descargas-bcpt
-````
+| arch64 | docker pull tzinm/descargas-bcpt:arch64 - docker pull tzinm/descargas-bcpt:latest |
+| :----: | ------------------------------------------------------------ |
+| armhf  | docker pull tzinm/descargas-bcpt:arm                         |
 
 - Crear el contenedor
 
 ````bash
 docker run -d \
+-e TZ=Europe/Madrid \
+-e PUID=1000 \
+-e PGID=100 \
 -e usuario1=12345678 \
 -e token=AA3322bb:9900AA \
 --name bot-bcpt \
-tzinm/descargas-bcpt
+tzinm/descargas-bcpt:tag
 ````
 
 
@@ -123,11 +125,11 @@ En este caso mostraré varias capturas de que parámetros debemos modificar. Las
 
 
    ![Volumen](https://dl.dropbox.com/s/flrnv1y2lj9gayd/volumen-synology.jpg?dl=0 "Volumen")
-   
+
 
 3. Añadir las **variables de entorno** que hemos visto más arriba.
 
-   
+  
    ![Variables de entorno](https://dl.dropbox.com/s/3b57guj4g2zx0ov/medio-ambiente-synology.jpg?dl=0 "Variables de entorno")
 
    
