@@ -6,6 +6,13 @@ La creación de este bot se basa en la guía de "[Bot de descargas para NAS Syno
 
 Este contenedor ha sido creado puesto que la guía no era aplicable para el Sistema Operativo OpenMediaVault y para simplificar los pasos a realizar.
 
+### Versiones disponibles
+
+| Arquitectura | Tag     |
+| ------------ | ------- |
+| x86-64       | latest  |
+| armhf        | amr32v7 |
+
 
 
 ## Parámetros
@@ -23,7 +30,7 @@ Para crear este contenedor debemos establecer los siguientes parámetros:
 
 **¿Cómo obtenemos los parámetros que necesitamos?**
 
-- ID de usuario e ID de grupo: para obtener estos datos basta con ejecutar el siguiente comando en una consola. Me consta que algunos Sistemas Operativos con interfaz gráfica además de mostrar el nombre de usuario también muestra su ID, con lo que no sería necesario ejecutar el siguiente comando.
+- **ID de usuario e ID de grupo:** para obtener estos datos basta con ejecutar el siguiente comando en una consola. Me consta que algunos Sistemas Operativos con interfaz gráfica además de mostrar el nombre de usuario también muestra su ID, con lo que no sería necesario ejecutar el siguiente comando.
 
 ````bash
 id nombre_usuario
@@ -35,7 +42,7 @@ id nombre_usuario
 
 
 
-- Id de usuario de **Telegram**: para obtener nuestro id de usuario de telegram, utilizaremos el bot [@myidbot](https://t.me/myidbot). Pasos a seguir:
+- **Id de usuario de Telegram:** para obtener nuestro id de usuario de telegram, utilizaremos el bot [@myidbot](https://t.me/myidbot). Pasos a seguir:
 
   - Iniciamos el bot
     
@@ -49,9 +56,7 @@ id nombre_usuario
 
     ![myid](https://dl.dropboxusercontent.com/s/lcg62ruhrb7wr76/idtzinm.png?dl=0)
 
-- Token del bot: lo primero que debemos hacer es iniciar una conversación con el bot [@BotFather](https://t.me/BotFather) para crear un bot. Pasos a seguir:
-
-  ​	
+- **Token del bot:** lo primero que debemos hacer es iniciar una conversación con el bot [@BotFather](https://t.me/BotFather) para crear un bot. Pasos a seguir:
 
   - Ejecutamos el comando /newbot
 
@@ -61,7 +66,7 @@ id nombre_usuario
 
     ![token](https://dl.dropbox.com/s/g4ro2s95pvv5krf/tokenbot.png?dl=0)
 
-- Volumen: aquí indicaremos donde queremos que se almacenen los torrent dentro de nuestro sistema operativo (DSM, OpenMediaVault, QTS, etc.). Habitualmente será el directorio "caliente" que utiliza el cliente torrent para añadir los .torrent a la lista de descargas.
+- **Volumen:** aquí indicaremos donde queremos que se almacenen los torrent dentro de nuestro sistema operativo (DSM, OpenMediaVault, QTS, etc.). Habitualmente será el directorio "caliente" que utiliza el cliente torrent para añadir los .torrent a la lista de descargas.
 
 
 ## Creación del contenedor vía cli
@@ -69,13 +74,17 @@ id nombre_usuario
 - Descargar la imagen
 
 ````bash
-docker pull tzinm/descargas-bcpt
+#x86-64
+docker pull tzinm/descargas-bcpt:latest
+
+#armhf
+docker pull tzinm/descargas-bcpt:amr32v7
 ````
 
 - Crear el contenedor
 
 ````bash
-docker create -d \
+docker create \
 -e TZ=Europe/Madrid \
 -e PUID=id_usuario \
 -e PGID=id_grupo \
