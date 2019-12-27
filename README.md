@@ -14,10 +14,11 @@ Para crear este contenedor debemos establecer los siguientes parámetros:
 
 | Parámetro          | Función                                                      |
 | ------------------ | ------------------------------------------------------------ |
-| -e PUID=           | ID de usuario                                                |
-| -e PGID=           | ID de grupo                                                  |
-| -e usuario1=       | Se establece el id del usuario de telegram que tendrá permisos para interactuar con el bot. |
-| -e token=          | Se establece el token del bot de telegram al que enviaremos el contenido a descargar (.torrent y zip). |
+| -e TZ              | Zona horaria                                                 |
+| -e PUID            | ID de usuario                                                |
+| -e PGID            | ID de grupo                                                  |
+| -e usuario1        | Se establece el id del usuario de telegram que tendrá permisos para interactuar con el bot. |
+| -e token           | Se establece el token del bot de telegram al que enviaremos el contenido a descargar (.torrent y zip). |
 | -v /home/descargas | La ruta donde se almacenará el contenido que enviemos al bot. |
 
 **¿Cómo obtenemos los parámetros que necesitamos?**
@@ -39,7 +40,7 @@ id nombre_usuario
   - Iniciamos el bot
     
     ![Iniciar bot](https://dl.dropboxusercontent.com/s/v30meu6tperge3i/myidbot.png?dl=0)
-   
+  
   - Ejecutamos la acción getid
 
     ![getid](https://dl.dropboxusercontent.com/s/pkiuu4qabzg23p3/getid.png?dl=0)
@@ -74,7 +75,10 @@ docker pull tzinm/descargas-bcpt
 - Crear el contenedor
 
 ````bash
-docker run -d \
+docker create -d \
+-e TZ=Europe/Madrid \
+-e PUID=id_usuario \
+-e PGID=id_grupo \
 -e usuario1=12345678 \
 -e token=AA3322bb:9900AA \
 --name bot-bcpt \
@@ -123,11 +127,11 @@ En este caso mostraré varias capturas de que parámetros debemos modificar. Las
 
 
    ![Volumen](https://dl.dropbox.com/s/flrnv1y2lj9gayd/volumen-synology.jpg?dl=0 "Volumen")
-   
+
 
 3. Añadir las **variables de entorno** que hemos visto más arriba.
 
-   
+  
    ![Variables de entorno](https://dl.dropbox.com/s/3b57guj4g2zx0ov/medio-ambiente-synology.jpg?dl=0 "Variables de entorno")
 
    
