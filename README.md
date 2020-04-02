@@ -36,10 +36,10 @@ Se ha añadido una nueva funcionalidad, se pueden añadir tantos usuarios como g
 | ------------------ | ------------------------------------------------------------ |
 | -e usuario2        | Se establece el id del usuario de telegram que tendrá permisos para interactuar con el bot. |
 | -e usuario3        | Se establece el id del usuario de telegram que tendrá permisos para interactuar con el bot. |
-| -e grupo1          | Se establece el id del grupo de telegram que tendrá permisos para interactuar con el bot. |
+| -e grupo1          | Se establece el id del grupo de telegram que tendrá permisos para interactuar con el bot. |
 | -e grupo2          | Se establece el id del grupo de telegram que tendrá permisos para interactuar con el bot. |
 
-Todos estos parámetros son opcionales, simplemente es un ejemplo de lo que podemos añadir. Tanto los usuarios como los grupos, deberán añadirse de forma correlativa (usuario1,usuario2,usuario3,...) (~~usuario2,usuario1,usuario3,...~~) o (grupo1,grupo2,grupo3,...) (~~grupo3,grupo1,grupo2~~).
+Todos estos parámetros son opcionales, simplemente es un ejemplo de lo que podemos añadir. Tanto los usuarios como los grupos[^1], deberán añadirse de forma correlativa (usuario1,usuario2,usuario3,...) (~~usuario2,usuario1,usuario3,...~~) o (grupo1,grupo2,grupo3,...) (~~grupo3,grupo1,grupo2~~).
 
 [^1]:Revisar el apartado de configuración del bot para grupos.
 
