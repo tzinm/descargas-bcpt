@@ -39,7 +39,7 @@ Se ha añadido una nueva funcionalidad, se pueden añadir tantos usuarios como g
 | -e grupo1          | Se establece el id del grupo de telegram que tendrá permisos para interactuar con el bot. |
 | -e grupo2          | Se establece el id del grupo de telegram que tendrá permisos para interactuar con el bot. |
 
-Todos estos parámetros son opcionales, simplemente es un ejemplo de lo que podemos añadir. Tanto los usuarios como los grupos[^1], deberán añadirse de forma correlativa (usuario1,usuario2,usuario3,...) (~~usuario2,usuario1,usuario3,...~~) o (grupo1,grupo2,grupo3,...) (~~grupo3,grupo1,grupo2~~).
+Todos estos parámetros son opcionales, simplemente es un ejemplo de lo que podemos añadir. Tanto los usuarios como los grupos[^1], deberán añadirse de forma correlativa (usuario1,usuario2,usuario3,...) (~~usuario2,usuario1,usuario3,...~~) o (grupo1,grupo2,grupo3,...) (~~grupo3,grupo1,grupo2,...~~).
 
 [^1]:Revisar el apartado de configuración del bot para grupos.
 
@@ -77,12 +77,12 @@ id nombre_usuario
 
   * Ejecutamos el comando /setprivacy
 
-    ![image-20200402175521656 "set privacy"](imagenes/image-20200402175521656.png "set privacy")
+    ![set privacy](https://dl.dropboxusercontent.com/s/0bbv4fezhfsx0wf/set-privacy.png?dl=0 "set privacy")
 
   * Deberemos elegir el bot al que queremos modificar la configuración de privacidad.
   * Debemos elegir la opción **Disable**, esto hará que el bot sea capaz de leer los mensajes del grupo.
 
-  ![image-20200402175756600 "set Disable"](imagenes/image-20200402175756600.png "set Disable")
+  ![set Disable](https://dl.dropboxusercontent.com/s/6xx85im4s4r6b9j/privacy-disable.png?dl=0 "set Disable")
 
 - **Token del bot:** lo primero que debemos hacer es iniciar una conversación con el bot [@BotFather](https://t.me/BotFather) para crear un bot. Pasos a seguir:
 
