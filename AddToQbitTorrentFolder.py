@@ -31,10 +31,9 @@ from telegram.ext import (Updater, CommandHandler, MessageHandler, Filters, Rege
 from telegram import (InlineQueryResultArticle, ParseMode, InputTextMessageContent, MessageEntity, InlineKeyboardButton, InlineKeyboardMarkup)
 import telegram	
 import logging
-from os import remove
 import os
-usuario1 = os.environ['usuario1']
-token = os.environ['token']
+from os import remove
+from os import environ
 from os import scandir, getcwd, rename
 import zipfile
 
@@ -71,32 +70,49 @@ def rename_files(ruta):
 			rename(archivos, archivos[1:-1])
 
 #----------------------------------------------
+# Función para contar los usuarios y/o grupos
+# que se han añadido en la variables a la hora
+# de inicializar el contenedor
+#----------------------------------------------
+
+def calcular(miembros):
+	total=0
+	contador=1
+	while True:
+		try:
+			if environ[miembros+str(contador)]:
+				total+=1
+				contador+=1
+		except:
+			break
+	return total
+
+#----------------------------------------------
 # Función para descargar .torrent y enviarlos 
 # a una carpeta
 #----------------------------------------------
 
-def descargar_archivos(bot, update):
+def descargar_archivos(update, context):
+	#Añadimos los ID de usuarios a la lista "miembros_permitidos"
+	if calcular("usuario") > 0:
+		miembros_permitidos=[]
+		for i in range (1,calcular("usuario")+1):
+			miembros_permitidos.append(int(environ['usuario'+str(i)]))
 
-	#----------------------------------------------
-	# Indicamos cuales son los usuarios que pueden
-	# utilizar nuestro bot
-	#----------------------------------------------	
-	usuarios_permitidos={
-		# Los números de la izquierda son las ID's de los usuarios que quieres que puedan utilizar el bot
-		# Si quieres ser solo tú, deja 1 con tu ID y la descripción
-		int(usuario1) : 'Propietario del bot',
-		#3123123234: 'Compañero de piso', #<-- Si no te interesa alguno, puedes borrar la linea o comentarla con un #
-		#41231221561 : 'Amigo del amigo del propietario', #Importante poner siempre las comas, aunque sea la última línea
-	}
+	#Añadimos los ID de grupos a la lista "miembros_permitidos"
+	if calcular("grupo") > 0:
+		for i in range (1,calcular("grupo")+1):
+			miembros_permitidos.append(int(environ['grupo'+str(i)]))
+
 	m=update.message
 
-	if int(m.chat.id) in usuarios_permitidos:			
+	if int(m.chat.id) in miembros_permitidos:			
 
 		ruta='/home/descargas/' 
 		tmp='/zip/'
 
 		filename=m.document.file_name	
-		archivo = bot.getFile(m.document.file_id)	
+		archivo = context.bot.getFile(m.document.file_id)	
 
 		if filename.endswith('.zip'):				
 			DownloadFile(archivo.file_path, tmp, filename)				
@@ -105,26 +121,25 @@ def descargar_archivos(bot, update):
 				if os.path.dirname(torrents)=='' and torrents.endswith('.torrent'):
 					zf.extract(torrents, ruta)					
 			zf.close()		
-			rename_files()
 			remove(tmp+filename)		
-			bot.send_message(chat_id=m.chat.id, text="Se han guardado los archivos de <b>"+filename+"</b> en la carpeta", parse_mode="HTML") 			
+			context.bot.send_message(chat_id=m.chat.id, text="Los torrent que se encontraban en el fichero <b>"+filename+"</b> se han descomprimido y añadido al directorio correspondiente.", parse_mode="HTML")
 
 		if filename.endswith('.torrent'):		
 			DownloadFile(archivo.file_path, ruta, filename)
-			bot.send_message(chat_id=m.chat.id, text="El archivo <b>"+filename+"</b> se ha añadido guardado en la carpeta", parse_mode="HTML") 
+			context.bot.send_message(chat_id=m.chat.id, text="El fichero <b>"+filename+"</b> se ha añadido correctamente al directorio correspondiente.", parse_mode="HTML")
 
 	else:
-		bot.send_message(chat_id=m.chat.id, text="No tienes permisos suficientes para utilizar el bot", parse_mode="HTML") 
+		context.bot.send_message(chat_id=m.chat.id, text="No tienes permisos suficientes para utilizar el bot", parse_mode="HTML") 
 
 
-def error(bot, update, error):
-	logger.warn('Update "%s" caused error "%s"' % (update, error))
+def error(update, context):
+	logger.warning('Update "%s" caused error "%s"' % (update, context.error))
 
 
 def main():
     # Create the EventHandler and pass it your bot's token.
 
-	updater = Updater(token)
+	updater = Updater(environ['token'], use_context=True)
 	dp = updater.dispatcher
 
 	dp.add_handler(MessageHandler(Filters.document, descargar_archivos)) 
