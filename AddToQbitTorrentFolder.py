@@ -31,6 +31,7 @@ from telegram.ext import (Updater, CommandHandler, MessageHandler, Filters, Rege
 from telegram import (InlineQueryResultArticle, ParseMode, InputTextMessageContent, MessageEntity, InlineKeyboardButton, InlineKeyboardMarkup)
 import telegram	
 import logging
+import os
 from os import remove
 from os import environ
 from os import scandir, getcwd, rename
@@ -91,8 +92,7 @@ def calcular(miembros):
 # a una carpeta
 #----------------------------------------------
 
-def descargar_archivos(bot, update):
-	
+def descargar_archivos(update, context):
 	#Añadimos los ID de usuarios a la lista "miembros_permitidos"
 	if calcular("usuario") > 0:
 		miembros_permitidos=[]
@@ -112,7 +112,7 @@ def descargar_archivos(bot, update):
 		tmp='/zip/'
 
 		filename=m.document.file_name	
-		archivo = bot.getFile(m.document.file_id)	
+		archivo = context.bot.getFile(m.document.file_id)	
 
 		if filename.endswith('.zip'):				
 			DownloadFile(archivo.file_path, tmp, filename)				
@@ -121,26 +121,25 @@ def descargar_archivos(bot, update):
 				if os.path.dirname(torrents)=='' and torrents.endswith('.torrent'):
 					zf.extract(torrents, ruta)					
 			zf.close()		
-			rename_files()
 			remove(tmp+filename)		
-			bot.send_message(chat_id=m.chat.id, text="Se han guardado los archivos de <b>"+filename+"</b> en la carpeta", parse_mode="HTML") 			
+			context.bot.send_message(chat_id=m.chat.id, text="Los torrent que se encontraban en el fichero <b>"+filename+"</b> se han descomprimido y añadido al directorio correspondiente.", parse_mode="HTML")
 
 		if filename.endswith('.torrent'):		
 			DownloadFile(archivo.file_path, ruta, filename)
-			bot.send_message(chat_id=m.chat.id, text="El archivo <b>"+filename+"</b> se ha añadido guardado en la carpeta", parse_mode="HTML") 
+			context.bot.send_message(chat_id=m.chat.id, text="El fichero <b>"+filename+"</b> se ha añadido correctamente al directorio correspondiente.", parse_mode="HTML")
 
 	else:
-		bot.send_message(chat_id=m.chat.id, text="No tienes permisos suficientes para utilizar el bot", parse_mode="HTML") 
+		context.bot.send_message(chat_id=m.chat.id, text="No tienes permisos suficientes para utilizar el bot", parse_mode="HTML") 
 
 
-def error(bot, update, error):
-	logger.warn('Update "%s" caused error "%s"' % (update, error))
+def error(update, context):
+	logger.warning('Update "%s" caused error "%s"' % (update, context.error))
 
 
 def main():
     # Create the EventHandler and pass it your bot's token.
 
-	updater = Updater(environ['token'])
+	updater = Updater(environ['token'], use_context=True)
 	dp = updater.dispatcher
 
 	dp.add_handler(MessageHandler(Filters.document, descargar_archivos)) 

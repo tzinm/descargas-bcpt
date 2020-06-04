@@ -22,8 +22,6 @@ Para crear este contenedor debemos establecer los siguientes parámetros:
 | Parámetro          | Función                                                      |
 | ------------------ | ------------------------------------------------------------ |
 | -e TZ              | Zona horaria                                                 |
-| -e PUID            | ID de usuario                                                |
-| -e PGID            | ID de grupo                                                  |
 | -e usuario1        | Se establece el id del usuario de telegram que tendrá permisos para interactuar con el bot. |
 | -e token           | Se establece el token del bot de telegram al que enviaremos el contenido a descargar (.torrent y zip). |
 | -v /home/descargas | La ruta donde se almacenará el contenido que enviemos al bot. |
@@ -116,8 +114,6 @@ docker pull tzinm/descargas-bcpt:arm32v7
 ````bash
 docker create \
 -e TZ=Europe/Madrid \
--e PUID=id_usuario \
--e PGID=id_grupo \
 -e usuario1=12345678 \
 -e token=AA3322bb:9900AA \
 -v /directorio_caliente:/home/descargas
@@ -166,12 +162,11 @@ En este caso mostraré varias capturas de que parámetros debemos modificar. Las
 2. Establecer el **volúmen**, en la parte izquierda el que corresponde a DSM, y en la parte derecha al correspondiente al contenedor. **NO** marcar la casilla **sólo lectura**. 
 
 
-   ![Volumen](https://dl.dropbox.com/s/flrnv1y2lj9gayd/volumen-synology.jpg?dl=0 "Volumen")
-
+   ​			 ![Volumen](https://dl.dropbox.com/s/flrnv1y2lj9gayd/volumen-synology.jpg?dl=0 "Volumen")
 
 3. Añadir las **variables de entorno** que hemos visto más arriba.
 
-  
+
    ![Variables de entorno](https://dl.dropbox.com/s/3b57guj4g2zx0ov/medio-ambiente-synology.jpg?dl=0 "Variables de entorno")
 
    
